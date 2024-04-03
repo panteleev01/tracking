@@ -1,0 +1,35 @@
+version: '2'
+services:
+
+  backend:
+    build: ./backend
+    container_name: backned_service
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/test
+      SPRING_DATASOURCE_USERNAME: docker
+      SPRING_DATASOURCE_PASSWORD: docker
+    ports:
+      - "8080:8080"
+
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: "docker"
+      POSTGRES_PASSWORD: "docker"
+      PGDATA: /data/postgres
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
+
+  front:
+    build: ./frontend
+    image: frontend_service
+    restart: always
+    ports:
+      - "5036:5036"
+

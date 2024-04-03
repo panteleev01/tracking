@@ -1,0 +1,13 @@
+.validated-button {
+    background-color: white;
+      border-color: black;
+  
+      border: 2px solid black;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  
+  .disabledInput {
+    filter: brightness(90%);
+  }
